@@ -1,0 +1,36 @@
+spring:
+  profiles:
+    #  Indicate the environment
+    active: dev
+  application:
+    #  projectName
+    name: upload_service
+
+  #    Swagger-UI starts 404 problem, add interception
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+
+server:
+  port: 8888
+  #  Uniform request prefix
+  servlet:
+    context-path: /upload
+
+logging:
+  config: classpath:logback-spring.xml
+  #  Record all SQl
+  level:
+    com:
+      baomidou:
+        mybatisplus:
+          core:
+            mapper:
+              BaseMapper: debug
+      bin:
+        bin_fresh_recruit_backend:
+          mapper: debug
